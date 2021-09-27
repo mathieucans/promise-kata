@@ -23,9 +23,17 @@ class Console {
         console.log(message)
         this.messages.push(message)
     }
+
+    static clear() {
+        this.messages =[]
+    }
 }
 
 describe('Promises', () => {
+    beforeEach(() => {
+        Console.clear()
+    });
+
     test('syncronous call', () => {
         first()
         second()
