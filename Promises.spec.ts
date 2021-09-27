@@ -43,7 +43,7 @@ describe('Promises', () => {
     });
 
     // Make this test pass without change async_second signature
-    test('set timeout enque messages ', async () => {
+    test('set timeout enqueue messages ', async () => {
         first()
         async_second()
         third()
