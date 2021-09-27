@@ -42,4 +42,10 @@ describe('Promises', () => {
 
         expect(Console.messages).toEqual(["1", "3", "2"]);
     });
+
+    test('promised are executed instantly', () => {
+        new Promise(() => Console.log(''));
+
+        expect(Console.messages).toEqual(['executed'])
+    });
 });
