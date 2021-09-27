@@ -1,28 +1,45 @@
-function first(){
+function first() {
     Console.log('1')
 }
-function second(){
+
+function second() {
     Console.log('2')
 }
-function third(){
+
+function async_second() {
+    setTimeout(() => {
+        Console.log('2')
+    }, 0);
+}
+
+function third() {
     Console.log('3')
 }
 
-class Console{
-    static messages:Array<string> =[];
+class Console {
+    static messages: Array<string> = [];
 
-    static log(message:string){
+    static log(message: string) {
         console.log(message)
         this.messages.push(message)
     }
 }
 
 describe('Promises', () => {
-    test('a failing test', () => {
+    test('syncronous call', () => {
         first()
         second()
         third()
 
-        expect(true).toEqual(false);
+        expect(Console.messages).toEqual([]);
+    });
+
+    // Make this test pass without change async_second signature
+    test('set timeout enque messages ', async () => {
+        first()
+        async_second()
+        third()
+
+        expect(Console.messages).toEqual(["1", "3", "2"]);
     });
 });
