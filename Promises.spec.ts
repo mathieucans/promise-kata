@@ -1,13 +1,21 @@
 function first(){
-    console.log('1')
+    Console.log('1')
 }
 function second(){
-    console.log('2')
+    Console.log('2')
 }
 function third(){
-    console.log('3')
+    Console.log('3')
 }
 
+class Console{
+    static messages:Array<string> =[];
+
+    static log(message:string){
+        console.log(message)
+        this.messages.push(message)
+    }
+}
 
 describe('Promises', () => {
     test('a failing test', () => {
